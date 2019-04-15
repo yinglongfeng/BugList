@@ -1,10 +1,21 @@
 # BugList
-## 1 cannot import cv2
+### 1 
+
+cannot import cv2
+
 conda install -c https://conda.anaconda.org/menpo opencv3
-## 2 c AttributeError: 'NoneType' object has no attribute 'astype'
+
+### 2 
+
+c AttributeError: 'NoneType' object has no attribute 'astype'
+
 change the image name from .png to .jpg
-### 3 [[Node: save/Assign_37 = Assign[T=DT_FLOAT, _class=["loc:@model/encoder/Conv/weights"], use_locking=true, validate_shape=true, _device="/job:localhost/replica:0/task:0/cpu:0"](model/encoder/Conv/weights, save/RestoreV2_37)]]
+
+### 3 
+[[Node: save/Assign_37 = Assign[T=DT_FLOAT, _class=["loc:@model/encoder/Conv/weights"], use_locking=true, validate_shape=true, _device="/job:localhost/replica:0/task:0/cpu:0"](model/encoder/Conv/weights, save/RestoreV2_37)]]
+
 add --do_stereo
+
 ###4 NotFoundError (see above for traceback): /media/anotherday/fyl/masterthesis/KITTI/data_scene_flowtraining/image_2/000000_10.jpg
 	 [[Node: cond/ReadFile = ReadFile[_device="/job:localhost/replica:0/task:0/cpu:0"](cond/ReadFile/Switch:1)]]
 
@@ -20,9 +31,10 @@ Traceback (most recent call last):
     from ._caffe import Net, SGDSolver, NesterovSolver, AdaGradSolver, \
 ImportError: /home/anotherday/anaconda3/envs/caffe27/lib/python2.7/site-packages/caffe/../../../libcaffe.so.1.0.0: undefined symbol: _ZN7leveldb2DB4OpenERKNS_7OptionsERKSsPPS0_
 
-
 SOLUTION: conda install -c defaults protobuf libprotobuf
 
-###5 ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+###6 
+
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
 
 SOLUTION: change if image == NONE: to if image is NODE:
