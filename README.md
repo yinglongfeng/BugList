@@ -21,4 +21,8 @@ Traceback (most recent call last):
 ImportError: /home/anotherday/anaconda3/envs/caffe27/lib/python2.7/site-packages/caffe/../../../libcaffe.so.1.0.0: undefined symbol: _ZN7leveldb2DB4OpenERKNS_7OptionsERKSsPPS0_
 
 
-sulution: conda install -c defaults protobuf libprotobuf
+SOLUTION: conda install -c defaults protobuf libprotobuf
+
+###5 ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+
+SOLUTION: change if image == NONE: to if image is NODE:
