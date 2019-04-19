@@ -42,3 +42,11 @@ SOLUTION: conda install -c defaults protobuf libprotobuf
 ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
 
 SOLUTION: change if image == NONE: to if image is NODE:
+
+### 7 
+in windows  
+File "C:\Users\fyl\Anaconda3\envs\tf\lib\site-packages\tensorflow\python\training\saver.py", line 1717, in restore
+    + compat.as_text(save_path))
+ValueError: The passed save_path is not a valid checkpoint:
+
+ SOLUTION: restore_path = args.checkpoint_path #.split(".")[0]
