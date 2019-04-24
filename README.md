@@ -43,8 +43,18 @@ ValueError: The truth value of an array with more than one element is ambiguous.
 
 SOLUTION: change if image == NONE: to if image is NODE:
 
+<<<<<<< HEAD
 ### 7
 IOError: cannot identify image file 'test.ppm'
 
 change "import Image" to "from PIL import Image"
 
+=======
+### 8 
+in windows  
+File "C:\Users\fyl\Anaconda3\envs\tf\lib\site-packages\tensorflow\python\training\saver.py", line 1717, in restore
+    + compat.as_text(save_path))
+ValueError: The passed save_path is not a valid checkpoint:
+
+ SOLUTION: restore_path = args.checkpoint_path #.split(".")[0]
+>>>>>>> 3688a3191f9455c1b3e42dd5f226b7dbbd1f4719
