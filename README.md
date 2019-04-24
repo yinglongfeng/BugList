@@ -42,3 +42,9 @@ SOLUTION: conda install -c defaults protobuf libprotobuf
 ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
 
 SOLUTION: change if image == NONE: to if image is NODE:
+
+### 7
+IOError: cannot identify image file 'test.ppm'
+
+change "import Image" to "from PIL import Image"
+
