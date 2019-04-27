@@ -43,7 +43,7 @@ ValueError: The truth value of an array with more than one element is ambiguous.
 
 SOLUTION: change if image == NONE: to if image is NODE:
 
-<<<<<<< HEAD
+
 ### 7
 IOError: cannot identify image file 'test.ppm'
 
@@ -57,4 +57,9 @@ File "C:\Users\fyl\Anaconda3\envs\tf\lib\site-packages\tensorflow\python\trainin
 ValueError: The passed save_path is not a valid checkpoint:
 
  SOLUTION: restore_path = args.checkpoint_path #.split(".")[0]
->>>>>>> 3688a3191f9455c1b3e42dd5f226b7dbbd1f4719
+
+### 9
+TypeError: __init__() got an unexpected keyword argument 'constraint'
+
+Solution: change the tensorflow version from 1.2 to the newerst version
+          just because the name is diff in different version of tf
