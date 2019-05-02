@@ -63,3 +63,6 @@ TypeError: __init__() got an unexpected keyword argument 'constraint'
 
 Solution: change the tensorflow version from 1.2 to the newerst version
           just because the name is diff in different version of tf
+### 10 	failed call to cuInit: CUDA_ERROR_UNKNOWN 
+        tensorflow gpu can not work
+   Solution:sudo apt install nvidia-modprobe
