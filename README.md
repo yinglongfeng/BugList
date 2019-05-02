@@ -70,3 +70,7 @@ failed call to cuInit: CUDA_ERROR_UNKNOWN
  ### 11
  return _setlocale(category, locale)locale.Error: unsupported locale setting
  sudo dpkg-reconfigure locales
+ ### 12 
+ GPU OUT OF MEMORY 
+ QUEUE_SIZE = 2000 to QUEUE_SIZE = 20
+ also change the tensorflow gpu session to allow growth
