@@ -49,7 +49,6 @@ IOError: cannot identify image file 'test.ppm'
 
 change "import Image" to "from PIL import Image"
 
-=======
 ### 8 
 in windows  
 File "C:\Users\fyl\Anaconda3\envs\tf\lib\site-packages\tensorflow\python\training\saver.py", line 1717, in restore
@@ -67,10 +66,10 @@ Solution: change the tensorflow version from 1.2 to the newerst version
 failed call to cuInit: CUDA_ERROR_UNKNOWN 
         tensorflow gpu can not work
    Solution:sudo apt install nvidia-modprobe
- ### 11
+### 11
  return _setlocale(category, locale)locale.Error: unsupported locale setting
  sudo dpkg-reconfigure locales
- ### 12 
+### 12 
  GPU OUT OF MEMORY 
  QUEUE_SIZE = 2000 to QUEUE_SIZE = 20
  also change the tensorflow gpu session to allow growth
