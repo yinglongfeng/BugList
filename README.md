@@ -107,27 +107,37 @@ error: ImportError: dynamic module does not define init function (initicp_op)
 solve: rename icp_op.so to Icp_op.so
 
 ### 17  way to generate the ico_op.so
-####(1) download file from https://github.com/tensorflow/models/issues/5168
-####(2) sudo apt install libpcl-dev (1.7.2 is fine)
-####(3) sudo apt install libeigen3-dev (eigen must > 3.3/ my version is 3.3.5)
-####(4) export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
+
+(1) download file from https://github.com/tensorflow/models/issues/5168
+
+(2) sudo apt install libpcl-dev (1.7.2 is fine)
+
+(3) sudo apt install libeigen3-dev (eigen must > 3.3/ my version is 3.3.5)
+
+(4) export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
     export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-####(5) delete GLIBCXX_USE_CXX11_ABI=0 in cmakelist file
-####(6) ldd -r icp_op.so 
+
+(5) delete GLIBCXX_USE_CXX11_ABI=0 in cmakelist file
+
+(6) ldd -r icp_op.so 
     find if something else is wrong
-####(7) 
+
+(7) 
      copy file libtensorflow_framework.so to /usr/local/lib/
-####(8) cd models/research/vid2depth/ops
+
+(8) cd models/research/vid2depth/ops
     mkdir build
     cd  build
-####(9) cmake -DCMAKE_BUILD_TYPE=Release ..
-####(10) mv libicp_op.so ../Icp_op.so
+
+(9) cmake -DCMAKE_BUILD_TYPE=Release ..
+
+(10) mv libicp_op.so ../Icp_op.so
 
 ### 18 bazel to generate the icp_op.so
  
 bazel build -c opt ops/...
 
-########## vid2depth add icp PCL ####################################
+########## vid2depth add icp PCL #################################################################
 (1)ERROR: /home/anotherday/vid2depth_git/new/vid2depth/WORKSPACE:29:1: name 'http_archive' is not defined
 solve:  add load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive") IN WORKSPACE
 
