@@ -107,21 +107,23 @@ error: ImportError: dynamic module does not define init function (initicp_op)
 solve: rename icp_op.so to Icp_op.so
 
 ### 17  way to generate the ico_op.so
-(1) download file from https://github.com/tensorflow/models/issues/5168
-(2) sudo apt install libpcl-dev (1.7.2 is fine)
-(3) sudo apt install libeigen3-dev (eigen must > 3.3/ my version is 3.3.5)
-(4) export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
+####(1) download file from https://github.com/tensorflow/models/issues/5168
+####(2) sudo apt install libpcl-dev (1.7.2 is fine)
+####(3) sudo apt install libeigen3-dev (eigen must > 3.3/ my version is 3.3.5)
+####(4) export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
     export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-(5) delete GLIBCXX_USE_CXX11_ABI=0 in cmakelist file
-(6) ldd -r icp_op.so 
+####(5) delete GLIBCXX_USE_CXX11_ABI=0 in cmakelist file
+####(6) ldd -r icp_op.so 
     find if something else is wrong
-(7) cd models/research/vid2depth/ops
+####(7) 
+     copy file libtensorflow_framework.so to /usr/local/lib/
+####(8) cd models/research/vid2depth/ops
     mkdir build
     cd  build
-(8) cmake -DCMAKE_BUILD_TYPE=Release ..
-(9) mv libicp_op.so ../Icp_op.so
+####(9) cmake -DCMAKE_BUILD_TYPE=Release ..
+####(10) mv libicp_op.so ../Icp_op.so
 
-### 17 bazel to generate the icp_op.so
+### 18 bazel to generate the icp_op.so
  
 bazel build -c opt ops/...
 
@@ -185,15 +187,15 @@ SOLUTION: 这是 因为在用g++编译代码的时候没用使用tensorflow_fram
 
     use ldd -r icp_op.so to find the reason
 
-### 18 	
+### 19 	
 failed call to cuInit: CUDA_ERROR_UNKNOWN 
         tensorflow gpu can not work
    Solution:sudo apt install nvidia-modprobe
-### 19
+### 20
  return _setlocale(category, locale)locale.Error: unsupported locale setting
  sudo dpkg-reconfigure locales
 
-### 20 
+### 21 
  GPU OUT OF MEMORY 
  QUEUE_SIZE = 2000 to QUEUE_SIZE = 20
  also change the tensorflow gpu session to allow growth
