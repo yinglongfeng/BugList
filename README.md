@@ -118,6 +118,7 @@ solve: rename icp_op.so to Icp_op.so
     export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 (5) delete GLIBCXX_USE_CXX11_ABI=0 in cmakelist file
+    modify the CMakeLists.txt like change the tensorflow include the path and so on
 
 (6) ldd -r icp_op.so 
     find if something else is wrong
