@@ -21,7 +21,9 @@ message($ENV{OPENNI2_INCLUDE})
 message($ENV{OPENNI2_REDIST})
 find_package(OpenCV REQUIRED)
 
-add_executable(${PROJECT_NAME} src/main.cpp)
+add_executable(rgb_img src/main.cpp)
+add_executable(depth_img src/depth.cpp)
 
-target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} libOpenNI2.so )
+target_link_libraries(rgb_img ${OpenCV_LIBS} libOpenNI2.so )
+target_link_libraries(depth_img ${OpenCV_LIBS} libOpenNI2.so )
 
