@@ -210,3 +210,31 @@ failed call to cuInit: CUDA_ERROR_UNKNOWN
  GPU OUT OF MEMORY 
  QUEUE_SIZE = 2000 to QUEUE_SIZE = 20
  also change the tensorflow gpu session to allow growth
+
+### 22 
+ERROR: SyntaxError: Missing parentheses in call to 'print'
+SOLUTION: change python 3.6 to python 2.6
+
+### 23 read the oni file && cannot find openni.h
+
+(1)  git clone https://github.com/occipital/OpenNI2.git
+
+(2) make
+
+(3) go to /Packaging
+
+(4) conda activate caffe_python2.7
+
+(5) ReleaseVersion.py x64
+
+(6) go to /Final
+
+(7) extract OpenNI-Linux-x64-2.2.tar.bz2 
+
+(8) go into OpenNI-Linux-x64-2.2
+
+(9) sudo ./install.sh
+
+(10) cat OpenNIDevEnvironment >> ~/.bashrc
+     source ~/.bashrc
+(11) compile the openni file
