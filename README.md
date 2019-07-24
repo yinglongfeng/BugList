@@ -241,12 +241,38 @@ SOLUTION: change python 3.6 to python 2.6
 
 ### 24 
 ERROR: usb interface is not supported In Xtion
+
 solution: udo nano /etc/openni/GlobalDefaults.ini 
           comment it and it should work
            ;UsbInterface=2
            reboot
 ### 25
 error:hdf5.h no such file or directory
+
 solution: export CPATH="/usr/include/hdf5/serial/"
           in make file
           USER_LIBS= -L/usr/include/hdf5/serial/ -lhdf5
+
+### 26 USE JI KE YUN to train the model
+
+(1) cp data /input  cp sourcecode /input
+
+(2) install pcl
+
+conda install -c conda-forge pcl
+
+(3) change the CMakeLists.txt the tensorflow path (conda info -e)
+
+e.g.
+
+usr/local/miniconda3/envs/dl/...
+
+(4) build icp so file
+
+(5) mv libicp_op.so ../Icp_op.so
+
+(6) run the code 
+
+e.g.
+
+python train.py --logtostderr --checkpoint_dir /output/jikeyun_test/ --data_dir /input/data/ --batch_size 4 --img_height 192 --img_width 320 --icp_weight 0.1 --legacy_mode true
