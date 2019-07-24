@@ -238,3 +238,15 @@ SOLUTION: change python 3.6 to python 2.6
 (10) cat OpenNIDevEnvironment >> ~/.bashrc
      source ~/.bashrc
 (11) compile the openni file
+
+### 24 
+ERROR: usb interface is not supported In Xtion
+solution: udo nano /etc/openni/GlobalDefaults.ini 
+          comment it and it should work
+           ;UsbInterface=2
+           reboot
+### 25
+error:hdf5.h no such file or directory
+solution: export CPATH="/usr/include/hdf5/serial/"
+          in make file
+          USER_LIBS= -L/usr/include/hdf5/serial/ -lhdf5
