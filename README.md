@@ -276,3 +276,20 @@ usr/local/miniconda3/envs/dl/...
 e.g.
 
 python train.py --logtostderr --checkpoint_dir /output/jikeyun_test/ --data_dir /input/data/ --batch_size 4 --img_height 192 --img_width 320 --icp_weight 0.1 --legacy_mode true
+
+##########  compil flownet 2.0 ############################
+1 
+  error: error: token ""__CUDACC_VER__ is no longer supported
+
+  solution:  comments /usr/local/cuda/include/crt/common_functions.h line 64: #define __CUDACC_VER__ "__CUDACC_VER__ is no longer supported. Use __CUDACC_VER_MAJOR__, __CUDACC_VER_MINOR__, and __CUDACC_VER_BUILD__ instead."
+
+2 error: core/util/cuda_device_functions.h:32:31: fatal error: cuda/include/cuda.h: 
+
+  solution: (1) print(tf.sysconfig.get_include())
+
+            (2) add /usr/local in  CFLAGS
+
+3  add GPUCFLAGS = --expt-relaxed-constexpr
+
+   add -DNDEBUG in CFLAGS 
+
