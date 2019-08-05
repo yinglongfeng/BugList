@@ -293,3 +293,23 @@ python train.py --logtostderr --checkpoint_dir /output/jikeyun_test/ --data_dir 
 
    add -DNDEBUG in CFLAGS 
 
+4 error: libtensorflow_framework.so => not found
+
+5 conda deactivate conda deactivate do not use conda
+https://github.com/sampepose/flownet2-tf/issues/28#issuecomment-406941839
+
+cuda 9.0
+cudnn 7.1
+tensorflow 1.9.0
+Ubuntu 16.04
+
+6  error: libtensorflow_framework.so => not found it doesnot matter, we still can run the code
+
+### 27
+error: tensorflow 报错 libcusolver.so.8.0: cannot open shared object file: No such file or directory
+
+solution: echo $LD_LIBRARY_PATH
+	   /usr/local/cuda-8.0/lib64
+	   sudo ldconfig /usr/local/cuda-8.0/lib64
+		
+
