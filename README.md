@@ -99,7 +99,11 @@ solve: 1)export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
 ### 15  way to generate the ico_op.so
 
 error: undefined symbol: _ZN10tensorflow12OpDefBuilder3DocESs	(./icp_op.so)
-solve: delete GLIBCXX_USE_CXX11_ABI=0 in cmakelist file
+solve: delete GLIBCXX_USE_CXX11_ABI=0 in cmakelist file 
+
+notice: env
+
+(gcc version 5.4  tensorflow  address : in python2.7/dis..package/tensorflow/ but not python3.6)
 
 ### 16  way to generate the ico_op.so
 
@@ -278,24 +282,28 @@ e.g.
 python train.py --logtostderr --checkpoint_dir /output/jikeyun_test/ --data_dir /input/data/ --batch_size 4 --img_height 192 --img_width 320 --icp_weight 0.1 --legacy_mode true
 
 ##########  compil flownet 2.0 ############################
-1 
+first try:
+
+(1) 
   error: error: token ""__CUDACC_VER__ is no longer supported
 
   solution:  comments /usr/local/cuda/include/crt/common_functions.h line 64: #define __CUDACC_VER__ "__CUDACC_VER__ is no longer supported. Use __CUDACC_VER_MAJOR__, __CUDACC_VER_MINOR__, and __CUDACC_VER_BUILD__ instead."
 
-2 error: core/util/cuda_device_functions.h:32:31: fatal error: cuda/include/cuda.h: 
+(2) error: core/util/cuda_device_functions.h:32:31: fatal error: cuda/include/cuda.h: 
 
   solution: (1) print(tf.sysconfig.get_include())
 
             (2) add /usr/local in  CFLAGS
 
-3  add GPUCFLAGS = --expt-relaxed-constexpr
+(3)  add GPUCFLAGS = --expt-relaxed-constexpr
 
    add -DNDEBUG in CFLAGS 
 
-4 error: libtensorflow_framework.so => not found
+(4) error: libtensorflow_framework.so => not found
 
-5 conda deactivate conda deactivate do not use conda
+Second try:
+
+(1) conda deactivate conda deactivate do not use conda
 https://github.com/sampepose/flownet2-tf/issues/28#issuecomment-406941839
 
 cuda 9.0
@@ -303,7 +311,17 @@ cudnn 7.1
 tensorflow 1.9.0
 Ubuntu 16.04
 
-6  error: libtensorflow_framework.so => not found it doesnot matter, we still can run the code
+(2)  error: libtensorflow_framework.so => not found it doesnot matter, we still can run the code
+
+Third try:
+
+(1) download https://github.com/sampepose/flownet2-tf/issues/28#issuecomment-406941839 makefile
+
+(2) remove GLIBCXX_USE_CXX11_ABI=0 in cmakefile
+
+(3) make sure the env: gcc 5.4 g++ 5.4 libtensorflow_framework.so is in python2.7 but not in python 3.6 
+
+(4) download checkpoints in https://drive.google.com/file/d/1cft8EvnsBL5w4-REUeAaVWLeRx39hyHE/view
 
 ### 27
 error: tensorflow 报错 libcusolver.so.8.0: cannot open shared object file: No such file or directory
