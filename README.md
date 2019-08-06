@@ -304,14 +304,26 @@ first try:
 Second try:
 
 (1) conda deactivate conda deactivate do not use conda
+
 https://github.com/sampepose/flownet2-tf/issues/28#issuecomment-406941839
 
-cuda 9.0
-cudnn 7.1
-tensorflow 1.9.0
-Ubuntu 16.04
+https://blog.csdn.net/davidhopper/article/details/81206673
+
+install cuda 9.0 in /usr/local/cuda-9.0
+
+install cudnn 7.1
+
+intall tensorflow 1.9.0
+
+copy makefile from the link https://github.com/sampepose/flownet2-tf/issues/28#issuecomment-406941839
 
 (2)  error: libtensorflow_framework.so => not found it doesnot matter, we still can run the code
+
+(3) the way to find the libtensorflow_framework.so
+
+TF_LIB=$(python -c 'import tensorflow as tf; print(tf.sysconfig.get_lib())')
+
+TF_INC=$(python -c 'import tensorflow as tf; print(tf.sysconfig.get_include())')
 
 Third try:
 
@@ -329,5 +341,9 @@ error: tensorflow 报错 libcusolver.so.8.0: cannot open shared object file: No 
 solution: echo $LD_LIBRARY_PATH
 	   /usr/local/cuda-8.0/lib64
 	   sudo ldconfig /usr/local/cuda-8.0/lib64
-		
+### 28
+
+error: change python3 then can not open terminator
+
+solution: modify /usr/bin/terminator file from /usr/bin/python to /usr/bin/python2
 
