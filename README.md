@@ -329,9 +329,9 @@ Third try:
 
 (1) download https://github.com/sampepose/flownet2-tf/issues/28#issuecomment-406941839 makefile
 
-(2) remove GLIBCXX_USE_CXX11_ABI=0 in cmakefile
+(2) remove GLIBCXX_USE_CXX11_ABI=0 in cmakefile !!!
 
-(3) make sure the env: gcc 5.4 g++ 5.4 libtensorflow_framework.so is in python2.7 but not in python 3.6 
+(3) make sure the env: gcc 5.4 g++ 5.4 libtensorflow_framework.so is in the path of python2.7 but not in python 3.6 !!!
 
 (4) download checkpoints in https://drive.google.com/file/d/1cft8EvnsBL5w4-REUeAaVWLeRx39hyHE/view
 
