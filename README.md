@@ -347,3 +347,29 @@ error: change python3 then can not open terminator
 
 solution: modify /usr/bin/terminator file from /usr/bin/python to /usr/bin/python2
 
+### 29 
+
+error: AttributeError: module 'tensorflow.estimator' has no attribute 'SessionRunHook'
+
+solution:
+
+(1) Uninstall tensorflow, tensorboard
+
+(2)Uninstall tb-nightly(if it is installed)
+
+(3)Use "pip freeze | grep tensorflow" to check if tensorflow-estimator package has been installed. If so, uninstall it.
+
+(4)Go to site-packages and remove all tensorflow folders related to tensorflow, tensorboard, tensorflow-estimator etc
+
+(5)Reinstall the latest versions of tensorflow and tensorboard
+
+### 30
+
+error: tensorflow summary error：tags and values not the same shape [ ] != [16]
+
+solution: tx = tf.reduce_mean(self.egomotion[:, 0, 0], name = 'tx')
+
+    	  tf.summary.scalar('tx' , tx)
+
+	 instead of tf.summary.scalar('tx' , self.egomotion[:, 0, 0 ])
+
