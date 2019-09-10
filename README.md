@@ -373,3 +373,11 @@ solution: tx = tf.reduce_mean(self.egomotion[:, 0, 0], name = 'tx')
 
 	 instead of tf.summary.scalar('tx' , self.egomotion[:, 0, 0 ])
 
+### 31
+
+error: can not use "VideoCapture"
+
+solution: conda install -c conda-forge ffmpeg
+ 
+	   conda install -c conda-forge opencv
+
