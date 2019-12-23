@@ -9,6 +9,7 @@ solution: sudo apt install libssl-dev.
 ### 2
 
 error: nvcc fatal   : Option '--generate-code arch=', missing code cuda 10
+
 solution:   CUDA_ARCH := #-gencode arch=compute_20,code=sm_20 \
                 #-gencode arch=compute_20,code=sm_21 \
                 -gencode arch=compute_30,code=sm_30 \
@@ -72,6 +73,7 @@ method two(my solution):
 
 ### 6
 error: opencv-contrib-python安装
+
 solution: conda remove opencv
          conda install -c menpo opencv
          pip install --upgrade pip
@@ -80,6 +82,7 @@ solution: conda remove opencv
 ### 7 
 
 error: ValueError: invalid literal for int() with base 10 ""
+
 solution:
 	 try:
             skeleton_sequence['numFrame'] = int(ss)
