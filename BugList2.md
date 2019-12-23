@@ -100,3 +100,4 @@ solution:
 	PYTHON_EXECUTABLE=/home/fyl/anaconda3/envs/st-gcn/bin/python3.7
 	PYTHON_LIBRARY=/home/fyl/anaconda3/envs/st-gcn/lib/libpython3.7m.so
 	in cmake-gui add install pybind et
+!!! you should run the code $ python openpose_python.py $ in build/examples/tutorial_api_python/ file
