@@ -101,4 +101,4 @@ solution:
 	PYTHON_LIBRARY=/home/fyl/anaconda3/envs/st-gcn/lib/libpython3.7m.so
 	in cmake-gui add install pybind et
 
-!!! you should run the code $ python openpose_python.py $ in build/examples/tutorial_api_python/ file
+!!! you should run the code $ python openpose_python.py $ in build/examples/tutorial_api_python/ file instead of  examples/tutorial_api_python/
