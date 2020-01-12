@@ -1,6 +1,6 @@
 # BugList  2019/12
 
-### 1 
+### 1
 
 error :   could not find openssl
 
@@ -26,7 +26,9 @@ solution:   CUDA_ARCH := #-gencode arch=compute_20,code=sm_20 \
 error: caffe/proto/caffe.pb.h: No such file or directory
 
 solution:  protoc src/caffe/proto/caffe.proto --cpp_out=.
+
            sudo mkdir include/caffe/proto
+
            sudo mv src/caffe/proto/caffe.pb.h include/caffe/proto
 
 ### 4
@@ -35,8 +37,11 @@ error: 编译openpose时可能遇到的问题
 提示找不到caffe/proto/caffe.pb.h，导致编译失败。
 
 solution： 在openpose/3rdparty/caffe/目录下，终端操作：
+
           caffe$ protoc src/caffe/proto/caffe.proto --cpp_out=.
+          
           caffe$ mkdir include/caffe/proto
+
           caffe$ mv src/caffe/proto/caffe.pb.h include/caffe/proto/
 
 ### 5
@@ -44,13 +49,13 @@ solution： 在openpose/3rdparty/caffe/目录下，终端操作：
 error: 编译完成后还可能遇到的问题 F0704 14:27:12.379647 5860 upgrade_proto.cpp:97] Check failed: ReadProtoFromBinaryFile(param_file, param) Failed to parse NetParameter file: models/pose/body_25/pose_iter_584000.caffemodel
 Check failed: ReadProtoFromBinaryFile(param_file, param) Failed to parse NetParameter file: models/pose/body_25/pose_iter_584000.caffemodel
 
-solution: 
+solution:
 
-method one: 
+method one:
 
 出现上述错误，不是你项目编译有问题，也不是caffe编译有问题，仅仅是caffe模型没有下载完全！！！需要重新下载！！
 
-method two(my solution): 
+method two(my solution):
 
 (1) From memory remove clip_layer.hpp and clip_layer.cpp from caffe_root/src/caffe/layers.
 
@@ -61,8 +66,11 @@ method two(my solution):
 // optional ClipParameter clip_param = 148;
 ...
 //message ClipParameter {
+
 // required float min = 1;
+
 // required float max = 2;
+
 //}
 
 (4) then cd /<caffe_root> and "make clean" and then "make -j8"
@@ -74,12 +82,17 @@ method two(my solution):
 ### 6
 error: opencv-contrib-python安装
 
-solution: conda remove opencv
+solution:
+        
+        conda remove opencv
+         
          conda install -c menpo opencv
+         
          pip install --upgrade pip
+         
          pip install opencv-contrib-python
 
-### 7 
+### 7
 
 error: ValueError: invalid literal for int() with base 10 ""
 
@@ -96,9 +109,45 @@ solution:
 
 error: Error: OpenPose library could not be found. Did you enable `BUILD_PYTHON` in CMake and have this Python script in the right folder?
 
-solution: 
+solution:
+
+    ## 1
 	PYTHON_EXECUTABLE=/home/fyl/anaconda3/envs/st-gcn/bin/python3.7
-	PYTHON_LIBRARY=/home/fyl/anaconda3/envs/st-gcn/lib/libpython3.7m.so
-	in cmake-gui add install pybind et
+	
+    PYTHON_LIBRARY=/home/fyl/anaconda3/envs/st-gcn/lib/libpython3.7m.so
+
+    ## 2
+     If you run `make install` (default path is `/usr/local/python` for Ubuntu), you can also access the OpenPose/python module from there. This will install OpenPose and the python library at your desired installation path. Ensure that this is in your python path in order to use it.
+    
+    sys.path.append('/usr/local/python')
+
+	## 3
+    in cmake-gui add install pybind et
 
 !!! you should run the code $ python openpose_python.py $ in build/examples/tutorial_api_python/ file instead of  examples/tutorial_api_python/
+
+### 9 
+
+##### error: 
+make caffe error:  undefined reference to 'caffe::ReadIMageToDatum....'
+
+##### solution:
+    清除 /usr/lib/libcaffe.so 这个是之前安装的，有很大的干扰项
+
+##### error：
+ libprotobuf 2.6.1 may confict with libprotobuf 3
+
+##### solution：
+只要保留一个就可以了，这个问题不大的
+
+##### error: 
+licudart.so.10.0 can not open shared object file: no such file or directory
+
+##### solution: 
+        export PATH = $PATH:/usr/local/cuda-10.0/bin
+
+          export LD_LIBRARY_PATH=$ ...
+
+          export LIBRARY_PATH = $...
+
+          add them on bashrc file

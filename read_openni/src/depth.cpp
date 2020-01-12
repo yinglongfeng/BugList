@@ -1,5 +1,5 @@
 
-#include <iostream>  
+#include <iostream>
 #include <OpenNI.h>  
 #include <opencv2/photo.hpp>  
 #include <opencv2/highgui.hpp>  
@@ -7,7 +7,7 @@
 using namespace std;  
 using namespace openni;
 using namespace cv;
-  
+
 // int main(int argc,char **argv)
 int main()
 {  

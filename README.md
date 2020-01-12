@@ -1,31 +1,31 @@
 # BugList
 
-### 1 
+### 1
 
 cannot import cv2
 
 conda install -c https://conda.anaconda.org/menpo opencv3
 
-### 2 
+### 2
 
  cAttributeError: 'NoneType' object has no attribute 'astype'
 
  change the image name from .png to .jpg
 
 ### 3
- 
+
 [[Node: save/Assign_37 = Assign[T=DT_FLOAT, _class=["loc:@model/encoder/Conv/weights"], use_locking=true, validate_shape=true, _device="/job:localhost/replica:0/task:0/cpu:0"](model/encoder/Conv/weights, save/RestoreV2_37)]]
 
 add --do_stereo
 
-### 4 
+### 4
 
 NotFoundError (see above for traceback): /media/anotherday/fyl/masterthesis/KITTI/data_scene_flowtraining/image_2/000000_10.jpg
 	 [[Node: cond/ReadFile = ReadFile[_device="/job:localhost/replica:0/task:0/cpu:0"](cond/ReadFile/Switch:1)]]
 
 chang the test image to jpg, because the filenames is training/image_2/000004_10.jpg training/image_3/000004_10.jpg
 
-### 5 
+### 5
 >> import caffe
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -50,8 +50,8 @@ IOError: cannot identify image file 'test.ppm'
 change "import Image" to "from PIL import Image"
 
 =======
-### 8 
-in windows  
+### 8
+in windows
 File "C:\Users\fyl\Anaconda3\envs\tf\lib\site-packages\tensorflow\python\training\saver.py", line 1717, in restore
     + compat.as_text(save_path))
 ValueError: The passed save_path is not a valid checkpoint:
@@ -74,7 +74,7 @@ ValueError: list.remove(x): x not in list
 SOLUTION: config = tf.ConfigProto(allow_soft_placement=True) 
           ## let use 70% memeory of gpu
           gpu_options=tf.GPUOptionis()
-### 12 
+### 12
     seg_map[masks[n_]> 0,:] = colorize(n_, color=FL.color)
 IndexError: boolean index did not match indexed array along dimension 0; dimension is 480 but corresponding boolean dimension is 640
 
@@ -85,10 +85,10 @@ add  if num is 1 :
     in the maskrcnn inference.py  line 90
 
 ### 13 
- 
+
    source env.sh or change name from segim to segimg
 ### 14  way to generate the ico_op.so
-   
+
 error:ldd icp_op.so i see the error like: undefined symbol: cublasDsyr2k_v2, version libcublas.so.9.0	(/usr/local/lib/libtensorflow_framework.so)
 solve: 1)export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
        2)export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
