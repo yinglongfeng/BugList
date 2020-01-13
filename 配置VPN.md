@@ -3,7 +3,7 @@
 #### 1  下载并且购买发条云或者其他 VPN
 
 #### 2 测试
-        
+
         curl --socks5-hostname 127.0.0.1:1080 www.google.com.hk
 
         如果有结果，但是chrome上不了，说明vpn没问题，跳转到 3 来配置chrome
@@ -11,7 +11,7 @@
         如果没有结果，表示vpn配置的问题，此时跳转到 4 来重新配置shadowsocks
 
 #### 3 chrome 配置 SwitchyOmega
-     
+
       （1）下载 witchyOmega_Chromium.crx  https://github.com/FelisCatus/SwitchyOmega/releases
 
       （2）修改文件名称为 witchyOmega_Chromium.zip
@@ -25,6 +25,10 @@
                 （默认）    socks5    127.0.0.1  1080
 
         (6) 选择 应用选项
+
+        (7) 使用以下命令行来测试
+
+        curl --socks5-hostname 127.0.0.1:1080 https://www.youtube.com
 
 
 
