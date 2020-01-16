@@ -1,16 +1,28 @@
-# BugList  2019/12
+# BugList  2019/12 
+
+### Thema about pose estimation
 
 ### 1
 
-error :   could not find openssl
+##### error :   
 
-solution: sudo apt install libssl-dev.
+could not find openssl
+
+##### solution: 
+
+sudo apt install libssl-dev.
 
 ### 2
 
-error: nvcc fatal   : Option '--generate-code arch=', missing code cuda 10
+##### error: 
 
-solution:   CUDA_ARCH := #-gencode arch=compute_20,code=sm_20 \
+nvcc fatal:
+
+ Option '--generate-code arch=', missing code cuda 10
+
+##### solution:   
+
+CUDA_ARCH := #-gencode arch=compute_20,code=sm_20 \
                 #-gencode arch=compute_20,code=sm_21 \
                 -gencode arch=compute_30,code=sm_30 \
                 -gencode arch=compute_35,code=sm_35 \
@@ -23,9 +35,15 @@ solution:   CUDA_ARCH := #-gencode arch=compute_20,code=sm_20 \
 
 ### 3
 
-error: caffe/proto/caffe.pb.h: No such file or directory
+##### error: 
 
-solution:  protoc src/caffe/proto/caffe.proto --cpp_out=.
+caffe/proto/caffe.pb.h: No such file or directory
+
+##### solution:
+
+           # In the directory you installed Caffe to
+
+           protoc src/caffe/proto/caffe.proto --cpp_out=.
 
            sudo mkdir include/caffe/proto
 
@@ -33,10 +51,15 @@ solution:  protoc src/caffe/proto/caffe.proto --cpp_out=.
 
 ### 4
 
-error: 编译openpose时可能遇到的问题
+##### error: 
+
+编译openpose时可能遇到的问题
+
 提示找不到caffe/proto/caffe.pb.h，导致编译失败。
 
-solution： 在openpose/3rdparty/caffe/目录下，终端操作：
+##### solution： 
+
+在openpose/3rdparty/caffe/目录下，终端操作：
 
           caffe$ protoc src/caffe/proto/caffe.proto --cpp_out=.
           
@@ -46,12 +69,14 @@ solution： 在openpose/3rdparty/caffe/目录下，终端操作：
 
 ### 5
 
-error: 编译完成后还可能遇到的问题 F0704 14:27:12.379647 5860 upgrade_proto.cpp:97] Check failed: ReadProtoFromBinaryFile(param_file, param) Failed to parse NetParameter file: models/pose/body_25/pose_iter_584000.caffemodel
+##### error: 
+
+编译完成后还可能遇到的问题 F0704 14:27:12.379647 5860 upgrade_proto.cpp:97] Check failed: ReadProtoFromBinaryFile(param_file, param) Failed to parse NetParameter file: models/pose/body_25/pose_iter_584000.caffemodel
 Check failed: ReadProtoFromBinaryFile(param_file, param) Failed to parse NetParameter file: models/pose/body_25/pose_iter_584000.caffemodel
 
-solution:
+##### solution:
 
-method one:
+##### method one:
 
 出现上述错误，不是你项目编译有问题，也不是caffe编译有问题，仅仅是caffe模型没有下载完全！！！需要重新下载！！
 
@@ -80,23 +105,27 @@ method two(my solution):
 ./build/examples/openpose/openpose.bin --video examples/media/video.avi
 
 ### 6
-error: opencv-contrib-python安装
 
-solution:
-        
+##### error: 
+opencv-contrib-python安装
+
+##### solution:
+
         conda remove opencv
-         
+
          conda install -c menpo opencv
-         
+
          pip install --upgrade pip
-         
+
          pip install opencv-contrib-python
 
 ### 7
 
-error: ValueError: invalid literal for int() with base 10 ""
+##### error: 
 
-solution:
+ValueError: invalid literal for int() with base 10 ""
+
+##### solution:
 	 try:
             skeleton_sequence['numFrame'] = int(ss)
         except:
@@ -151,3 +180,110 @@ licudart.so.10.0 can not open shared object file: no such file or directory
           export LIBRARY_PATH = $...
 
           add them on bashrc file
+
+##### error:
+
+CMake Error: The following variables are used in this project, but they are set to NOTFOUND.
+Please set them or make sure they are set and tested correctly in the CMake files:
+CUDA_cublas_device_LIBRARY (ADVANCED)
+    linked by target "caffe" in directory /home/fyl/source_code/caffe/src/caffe
+
+##### solution:
+
+update cmake version with anaconda
+
+
+##### error:
+
+fatal error: google/protobuf/port_def.inc: No such file or directory
+
+#### solution:
+
+try to install the newest version of protobuf(3.10)
+
+##### error:
+
+外星人台式机重装系统以后没有了wifi
+
+##### solution:
+
+在只最后一行添加
+
+blacklist nouneau
+
+删除之前添加的
+
+blacklist nouveau
+
+options nouveau modeset=0
+
+
+### 10
+
+##### error
+
+FATAL ERROR: dynlink_nvcuvid.h: no such file or directory
+
+##### solution
+
+during cmake, add cmake -D BUILD_opencv_cudacodec=OFF
+
+
+### 11
+
+##### error:
+
+
+/home/ubuntu/anaconda3/envs/op/lib/libopencv_objdetect.so.3.3.2: undefined reference to std::thread::_State::~_State()@GLIBCXX_3.4.22
+
+##### solution:
+
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get install gcc-7 g++-7
+
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 60 --slave /usr/bin/g++ g++ /usr/bin/g++-7
+
+### 12
+
+##### error:
+
+undefined reference to `op::Array<float>::toString[abi:cxx11]() const'
+
+##### solution:
+
+make clean
+sudo make -j10 in openpose/build file
+
+### 13  A problem that has perfused me for a week
+
+##### error：
+
+fatal error: google/protobuf/port_def.inc: No such file or directory
+
+#### solution：
+
+(1） do not install protobuf 3.11
+
+(2) conda install protobuf=3.10
+
+(3) try to use sudo
+    sudo make all -j5
+
+(4) install cmake 3.15 from source instead of by conda
+
+(5) copy the complied right folder to it
+
+### 14
+
+##### error:
+
+include/caffe/proto/caffe.pb.h:17:2: error: #error This file was generated by an older version of protoc which is
+ #error This file was generated by an older version of protoc which is
+
+##### solution:
+
+in openpose cmake-gui, change opencv lib from anaconda3/envs/op//share/OpenCV/ to usr/share/OpenCV
+
+
+
