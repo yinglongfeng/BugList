@@ -47,18 +47,20 @@
 
 后续需要调用Python的API接口，我的步骤是（神奇的好了，但是我自己也不清楚到底是什么原因）：
 
-1. go look for the file - build/python/openpose/pyopenpose.cpython-36m-x86_64-linux-gnu.so and copy to /usr/local/lib/python3.6/dist-packages
+1. 在cmake-gui 中加入 pybind 一类的操作
 
-2. in /usr/local/lib/python3.6/dist-packages
+2. go look for the file - build/python/openpose/pyopenpose.cpython-36m-x86_64-linux-gnu.so and copy to /usr/local/lib/python3.6/dist-packages
+
+3. in /usr/local/lib/python3.6/dist-packages
 
    sudo ln -s pyopenpose.cpython-36m-x86_64-linux-gnu.so pyopenpose
-3.  run make install in /openpose/build/python/openpose
+4.  run make install in /openpose/build/python/openpose
 
-4. go into /openpose/build/python/
+5. go into /openpose/build/python/
 
         python
         from openpose import pyopenpose
-5. it works
+6. 如果不行，就重新copy 一下文件，在 /usr/share/OpenCV 的选择下, 选择 Python Build 重新编译openpose，按照上述操作再试一遍。 
 
 ## 小结
 
