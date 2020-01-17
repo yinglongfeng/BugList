@@ -43,6 +43,23 @@
 
 结果证明不仅编译成功，而且demo也可以运行了。
 
+更新 2020/01/17
+
+后续需要调用Python的API接口，我的步骤是（神奇的好了，但是我自己也不清楚到底是什么原因）：
+
+1. go look for the file - build/python/openpose/pyopenpose.cpython-36m-x86_64-linux-gnu.so and copy to /usr/local/lib/python3.6/dist-packages
+
+2. in /usr/local/lib/python3.6/dist-packages
+
+   sudo ln -s pyopenpose.cpython-36m-x86_64-linux-gnu.so pyopenpose
+3.  run make install in /openpose/build/python/openpose
+
+4. go into /openpose/build/python/
+
+        python
+        from openpose import pyopenpose
+5. it works
+
 ## 小结
 
 1. 编译成功的原因有一下几个要素：
@@ -66,3 +83,9 @@
 
 6. 代码记得备份，我一时着急，把自己的代码 **cd openpose && rm -r build**， 直接删除了自己在build下写的Python代码，以后记得上传github备份。
 
+
+
+
+<!-- params = dict()
+params["model_folder"] = "/home/XXXXX/openpose/models/"
+params["net_resolution"] = "160x80" -->
